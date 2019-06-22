@@ -16,7 +16,7 @@ public class Cliente {
     private String cpf;
     private Date data_nascimento;
     private String complemento;
-    private Boolean administrador;
+    private Boolean administrador=false;
     private String login;
     private String senha;
 
@@ -184,9 +184,10 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", telefone=" + telefone + ", administrador=" + administrador + ", login=" + login + ", senha=" + senha + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", telefone=" + telefone + ", cidade=" + cidade + ", cpf=" + cpf + ", data_nascimento=" + data_nascimento + ", complemento=" + complemento + ", administrador=" + administrador + ", login=" + login + ", senha=" + senha + '}';
     }
-    
+
+   
 
     
     

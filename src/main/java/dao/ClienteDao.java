@@ -33,7 +33,7 @@ public class ClienteDao {
     public boolean insertCliente(Cliente u) {
         try {
             // CONECTA
-
+System.out.println(u.toString());
             con.conecta();
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(INSERTCLIENTE);
