@@ -42,27 +42,17 @@ public class LoginBean {
                         HttpSession s = (HttpSession) ec.getSession(true);
                         s.setAttribute("admin-logado", u);
                         System.out.println("usuario é adm");
-                        return "";
+                        return "/administracao/principal?faces-redirect=true";
                     } else {
                         ExternalContext ec = context.getExternalContext();
                         HttpSession s = (HttpSession) ec.getSession(true);
                         s.setAttribute("usuario-logado", u);
                         System.out.println("usuario nao é adm");
-                        return "";
+                        return "/clientes/principal?faces-redirect=true";
                     }
 
-                }/*else{
-					FacesMessage mensagem = new FacesMessage("Senha inv�lida!");
-					mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
-					context.addMessage(null, mensagem);
-					return null;*/
-                //}
-            }/*else{
-				FacesMessage mensagem = new FacesMessage("Usu�rio/senha inv�lidos!");
-				mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
-				context.addMessage(null, mensagem);
-				return null;
-			}*/
+                }
+            }
 
         }
         FacesMessage mensagem = new FacesMessage("Usuario/senha invalidos!");
@@ -77,7 +67,7 @@ public class LoginBean {
         ExternalContext ec = context.getExternalContext();
         HttpSession s = (HttpSession) ec.getSession(true);
         s.invalidate();
-        return "saiu";
+        return "/index?faces-redirect=true";
     }
 
     public String getLogin() {
