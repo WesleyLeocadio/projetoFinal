@@ -6,6 +6,8 @@
 package bean;
 
 import dao.ClienteDao;
+import dao.ProdutoDao;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -13,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import modelo.Cliente;
+import modelo.Produto;
 
 /**
  *
@@ -22,9 +25,12 @@ import modelo.Cliente;
 @ManagedBean
 public class CadastroClienteBean {
     private Cliente novoUsuario;
+    private List<Cliente> clientes = new ArrayList<>();
+    ClienteDao dao = new ClienteDao();
 
     public CadastroClienteBean() {
         this.novoUsuario = new Cliente();
+         clientes = dao.listCliente();
     }
     
     
@@ -34,12 +40,9 @@ public class CadastroClienteBean {
         List<Cliente> clientes = cliente.listCliente();
 
         if (!clientes.contains(novoUsuario)) {
-
-          
             cliente.insertCliente(novoUsuario);
-
+            
             FacesContext context = FacesContext.getCurrentInstance();
-
             FacesMessage mensagem = new FacesMessage("Cadastro realizado com sucesso !!");
             mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
             context.addMessage(null, mensagem);
@@ -47,6 +50,10 @@ public class CadastroClienteBean {
             return "index";
 
         } else {
+            FacesContext context = FacesContext.getCurrentInstance();
+            FacesMessage mensagem = new FacesMessage("Cliente já cadastrado !!");
+            mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
+            context.addMessage(null, mensagem);
             return null;
         }
 
@@ -58,6 +65,14 @@ public class CadastroClienteBean {
 
     public void setNovoUsuario(Cliente novoUsuario) {
         this.novoUsuario = novoUsuario;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 
    

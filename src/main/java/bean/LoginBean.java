@@ -31,9 +31,9 @@ public class LoginBean {
         FacesContext context = FacesContext.getCurrentInstance();
 
         ClienteDao cliente = new ClienteDao();
-        List<Cliente> clientes = cliente.listCliente();
+       
 
-        for (Cliente u : clientes) {
+        for (Cliente u : cliente.listCliente()) {
 
             if (u.getLogin().equals(this.getLogin())) {
                 if (u.getSenha().equals(this.getSenha())) {
@@ -53,12 +53,13 @@ public class LoginBean {
 
                 }
             }
-
+           
         }
-        FacesMessage mensagem = new FacesMessage("Usuario/senha invalidos!");
-        mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
-        context.addMessage(null, mensagem);
-        return null;
+            FacesMessage mensagem = new FacesMessage("Usuario/senha invalidos!");
+            mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
+            context.addMessage(null, mensagem);
+            
+            return null;
 
     }
 

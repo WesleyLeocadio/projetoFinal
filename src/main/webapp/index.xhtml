@@ -5,23 +5,26 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
+         <link rel ="stylesheet" href="resources/css/login.css" />
+
     </h:head>
     <h:body>
-        <h:form id="frm">
-            <p:messages />
-            <h:panelGrid columns="2" styleClass="grid-login">
+    
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <h:form>
+                    <p:messages />
+                  Login:  <h:inputText id="login" class="fadeIn second" value="#{loginBean.login}" />         
+                  Senha  <h:inputText id="passwor2" class="fadeIn third" value="#{loginBean.senha}"/>
+  
+                  <p:commandButton class="fadeIn fourth" value="Login" action="#{loginBean.autentica()}" />
+                   <p:commandButton class="fadeIn fourth" value="Não é cadastrado?" action="CadastroCliente?faces-redirect=true" immediate="true"/>
 
-                <p:outputLabel value="Usuário" for="usuario" />
-                <p:inputText id="usuario" size="20" value="#{loginBean.login}" />
+                  
+                </h:form>
 
-                <p:outputLabel value="Senha" for="senha" />
-                <p:password id="senha" size="20" value="#{loginBean.senha}" />
-
-                <p:commandButton value="Acessar" action="#{loginBean.autentica()}" onfocus="true" />
-
-                <p:commandButton value="Não é cadastrado?" action="CadastroCliente?faces-redirect=true" immediate="true"/>
-            </h:panelGrid>
-        </h:form>
+            </div>
+        </div>
     </h:body>
 </html>
 

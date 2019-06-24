@@ -1,37 +1,49 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns = "http://www.w3.org/1999/xhtml"   
-   xmlns:h = "http://java.sun.com/jsf/html"
-   xmlns:ui = "http://java.sun.com/jsf/facelets"> 
-   
-   <h:head>
-   <title>Sistema de Livros</title>
-   <h:outputStylesheet library="css" name="estilo.css" />
-   </h:head>
-   
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"> 
 
-   <h:body>
-      <div style = "width: 100%">
-         <ui:insert name = "header" >
-            <ui:include src = "/templates/header.xhtml" /> 
-         	</ui:insert> 
-      </div>
-      <br/>
-      
-      <div>
-         <ui:insert name = "content" >
-            <ui:include src = "/templates/contents.xhtml" />
-         </ui:insert>    
-      </div>
-      <br/>
-      
-      <div >
-         <ui:insert name = "footer" >
-            <ui:include src = "/templates/footer.xhtml" />
-         </ui:insert>
-      </div>
-   
-   </h:body>
+    <h:head>
+        <title>Sistema de Livros</title>
+        <h:outputStylesheet library="css" name="estilo.css" />
+    </h:head>
+
+
+    <h:body>
+        <div style="background-color:#6EDEC4;">
+            <div style = "width: 20%">
+                <ui:insert name = "header" >
+                    <ui:include src = "/templates/header.xhtml" /> 
+                </ui:insert> 
+            </div>
+            <br/>
+        </div>
+        
+        <div class="sidebar">
+            <p:breadCrumb>
+                <p:menuitem value="PRODUTOS" url="cadastrarProduto.xhtml" />
+                <p:menuitem value="CLIENTES" url="AtualizarCliente.xhtml" />
+                <p:menuitem value="Basketball" url="#" />
+                <p:menuitem value="NBA" url="#" />
+            </p:breadCrumb>
+            
+        </div>
+        <div>
+            <ui:insert name = "content" >
+                <ui:include src = "/templates/contents.xhtml" />
+            </ui:insert>    
+        </div>
+        <br/>
+
+        <div >
+            <ui:insert name = "footer" >
+                <ui:include src = "/templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+
+    </h:body>
 </html>

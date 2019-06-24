@@ -146,7 +146,6 @@ System.out.println(u.toString());
             //TRATA O RETORNO DA CONSULTA
             while (rs.next()) { //enquanto houver registro
                 Cliente u = new Cliente(rs.getInt("id"), rs.getString("nome"), rs.getString("rua"), rs.getString("numero"), rs.getString("bairro"), rs.getString("telefone"), rs.getString("cidade"), rs.getString("cpf"), rs.getDate("dataNascimento"), rs.getString("complemento"), rs.getBoolean("administrador"), rs.getString("login"), rs.getString("senha"));
-                System.out.println(u);
                 lista.add(u);
             }
             // DESCONECTA

@@ -3,57 +3,70 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <h:form id="frm">
-            <p:messages />
-            <h:panelGrid columns="2" styleClass="grid-login">
-                Nome: <p:inputText value="#{cadastraProdutoDao.novoProduto.nome}" required="true" requiredMessage="Nome é necessário"  ></p:inputText><br/>
-                Descrisção: <p:inputText value="#{cadastraProdutoDao.novoProduto.descricao}"></p:inputText><br/>
-             Preço:<p:spinner id="preco" value="#{cadastraProdutoDao.novoProduto.preco}"  min="0" />
-                Quantidade: <p:inputText value="#{cadastraProdutoDao.novoProduto.quantidade}"><br/>
-                    <f:validateLength minimum="1" />
-                </p:inputText><br/>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template = "../templates/common.xhtml">	
+        <ui:define name = "content">				
+          
+          
+  <h:form id="form1">
+            <p:growl id="msgs" />
+
+            <p:panel header="Cadastrar Produto" style="margin-bottom:20px">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="Nome : *" for="txt_nome"></h:outputLabel>
+                    <p:inputText id="txt_nome" value="#{cadastraProdutoDao.novoProduto.nome}" required="true"/>
+
+                    <h:outputLabel value="Descrição : *" for="txt_descricao"></h:outputLabel>
+                    <p:inputText id="txt_descricao" value="#{cadastraProdutoDao.novoProduto.descricao}" required="true"/>
+                    <h:outputLabel value="Preço : *" for="txt_preco"></h:outputLabel>
+                    <p:inputText id="txt_preco" value="#{cadastraProdutoDao.novoProduto.preco}" required="true"/>
+                    <h:outputLabel value="Quantidade : *" for="txt_quantidade"></h:outputLabel>
+                    <p:inputText id="txt_quantidade" value="#{cadastraProdutoDao.novoProduto.quantidade}" required="true"/>
+                    <p:commandButton id="btn_reset" value="Reset" type="reset"/>
+                    <p:commandButton id="btn_add" value="Add" update=" form1 form2 " action="#{cadastraProdutoDao.cadastrar()}"/> 
+
+                </h:panelGrid>
+            </p:panel>
+            </h:form>
+            <h:form id="form2">
+            <p:outputPanel id="books">
+                <p:dataTable value="#{cadastraProdutoDao.produtos}" var="produto" id="booksTable">
 
 
+                    <p:column headerText="Nome" sortBy="#{produto.nome}">
+                        <h:outputText value="#{produto.nome}" />
+                    </p:column>
 
-            </h:panelGrid>		
-            <div align="center">		
-                <p:commandButton value="Cadastrar" action="#{cadastraProdutoDao.cadastrar()}" />
-                <p:commandButton value="Cancelar" action="index?faces-redirect=true" immediate="true"/>	
-            </div>	
+                    <p:column headerText="Descrição">
+                        <h:outputText value="#{produto.descricao}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Preço" sortBy="#{produto.preco}">
+                        <h:outputText value="#{produto.preco}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Quantidade">
+                        <h:outputText value="#{produto.quantidade}"></h:outputText>
+                    </p:column>
+
+
+                   <p:column>
+                       <h:commandButton action="#{cadastraProdutoDao.deletar(produto.id_produto)}" value="Remover"/>
+                </p:column>
+                     <p:column>
+                         <h:commandButton action="#{cadastraProdutoDao.iniciar(produto)}"  immediate="true" value="Atualizar"/>
+                </p:column>
+                    
+          
+
+                </p:dataTable>
+            </p:outputPanel>
         </h:form>
         
-        
-         <h:form>
-            <br/><br/><br/>
-            <p:dataTable value="#{cadastraProdutoDao.produtos}" var="produto">
-                <p:column headerText="Título" sortBy="#{produto.nome}">
-                    <h:outputText value="#{produto.nome}"></h:outputText>
-                </p:column>
-
-                <p:column headerText="Descrição">
-                    <h:outputText value="#{produto.descricao}"></h:outputText>
-                </p:column>
-
-                <p:column headerText="Preço">
-                    <h:outputText value="#{produto.preco}"></h:outputText>
-                </p:column>
-
-                <p:column headerText="Quantidade">
-                    <h:outputText value="#{produto.quantidade}"></h:outputText>
-                </p:column>
-
-                <p:column>
-                    <h:commandButton action="#{cesta.addFilme(filme)}" value="Adicionar" disabled="#{filme.quantidade ==0}"/>
-                </p:column>
-
-            </p:dataTable>
-            <br/><br/><br/>
-        </h:form>
-    </h:body>
+           
+        </ui:define>         
+    </ui:composition>
+  
 </html>
 

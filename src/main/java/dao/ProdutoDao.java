@@ -22,7 +22,7 @@ public class ProdutoDao {
    
     private final String INSERTPRODUTO = "INSERT INTO PRODUTO (NOME,DESCRICAO, PRECO, QUANTIDADE) VALUES (?,?,?,?)";
     
-    private final String UPDATEPRODUTO = "UPDATE PRODUTO SET NOME= ?,DESCRICAO= ?,PRECO= ? ,QUANTIDADE=? WHERE ID = ?";
+    private final String UPDATEPRODUTO = "UPDATE PRODUTO SET NOME = ?,DESCRICAO = ?,PRECO= ? ,QUANTIDADE=? WHERE ID = ?";
 
     private final String DELETEPRODUTO = " DELETE FROM PRODUTO WHERE ID = ?";
     
@@ -78,6 +78,7 @@ public class ProdutoDao {
                         
 			preparaInstrucao.execute();
                         System.out.println("atualizaou");
+                     
 
 			con.desconecta();
 			

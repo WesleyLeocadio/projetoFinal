@@ -2,17 +2,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-       xmlns:f2="http://java.sun.com/jsf/core">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        <h:form id="frm">
-            <p:messages/>
-            <h:panelGrid columns="2" styleClass="grid-login">
-              <h:outputLabel value="Nome: " for="nome"/>
+      xmlns:f2="http://java.sun.com/jsf/core">
+    <ui:composition template = "../templates/common.xhtml">	
+        <ui:define name = "content">				
+
+            <h:form>
+                <p:messages style="color:red"></p:messages>
+                <p:fieldset legend="Atulizar Cliente">
+                    <p:panelGrid columns="2">
+                        <h:outputLabel value="Nome: " for="nome"/>
                         <p:inputText id="nome" value="#{cadastroClienteBean.novoUsuario.nome}" required="true" requiredMessage="Você deve informar nome">
                         </p:inputText>
 
@@ -49,12 +50,61 @@
                             <f:validateLength minimum="5" />
                         </p:password>
 
-            </h:panelGrid>		
-            <div align="center">		
-                <h:commandButton value="Cadastrar" action="#{cadastroClienteBean.cadastrar()}" />
-                <p:commandButton value="Cancelar" action="index?faces-redirect=true" immediate="true"/>	
-            </div>	
-        </h:form>
-    </h:body>
+
+
+
+                    </p:panelGrid>  
+
+                    <p:toolbar>
+                        <p:toolbarGroup>
+                            <h:commandButton action="#{cadastroClienteBean.cadastrar()}" value="Atualizar"/>
+                            <h:commandButton action="principal.xhtml" value="Ver cesta" immediate="true"/>
+                            <h:commandButton  value="Cancelar">
+                                <f:ajax render="@form" resetValues="true"/>
+                            </h:commandButton>
+
+                        </p:toolbarGroup>
+                    </p:toolbar>
+                </p:fieldset>
+            </h:form>
+
+            <h:form>
+                <br/><br/><br/>
+                <p:dataTable value="#{cadastroClienteBean.clientes}" var="cliente">
+                    <p:column headerText="Nome" sortBy="#{cliente.nome}">
+                        <h:outputText value="#{cliente.nome}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Cpf">
+                        <h:outputText value="#{cliente.cpf}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Data de Nascimento">
+                        <h:outputText value="#{cliente.data_nascimento}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Cidade">
+                        <h:outputText value="#{cliente.cidade}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Complemento">
+                        <h:outputText value="#{cliente.complemento}"></h:outputText>
+                    </p:column>
+
+
+
+                    <p:column>
+                        <h:commandButton action="#{cesta.addFilme(filme)}" value="Adicionar" disabled="#{filme.quantidade ==0}"/>
+                    </p:column>
+
+                </p:dataTable>
+                <br/><br/><br/>
+            </h:form>
+
+
+
+
+        </ui:define>         
+    </ui:composition>
 </html>
 

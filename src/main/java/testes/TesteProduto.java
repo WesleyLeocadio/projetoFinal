@@ -18,11 +18,8 @@ public class TesteProduto {
         
     
     ProdutoDao dao =  new ProdutoDao();
-    Produto p = new Produto("Porta", "Porta com 20x20", 100.00, 2);
-    List<Produto> pro = dao.listProduto();
-        for (int i = 0; i < pro.size(); i++) {
-            System.out.println(i);
-        }
+    Produto p = new Produto(5,"Porta", "Porta com 20x20", 10000, 2);
+    dao.updateProduto(p);
     }
     
 }
