@@ -14,7 +14,6 @@ public class Cliente {
     private String telefone;
     private String cidade;
     private String cpf;
-    private Date data_nascimento;
     private String complemento;
     private Boolean administrador=false;
     private String login;
@@ -27,7 +26,7 @@ public class Cliente {
     
   
 
-    public Cliente(String nome, String rua, String numero, String bairro, String telefone, String cidade, String cpf, Date data_nascimento, String complemento, Boolean administrador, String login, String senha) {
+    public Cliente(String nome, String rua, String numero, String bairro, String telefone, String cidade, String cpf, String complemento, Boolean administrador, String login, String senha) {
         this.nome = nome;
         this.rua = rua;
         this.numero = numero;
@@ -35,7 +34,6 @@ public class Cliente {
         this.telefone = telefone;
         this.cidade = cidade;
         this.cpf = cpf;
-        this.data_nascimento = data_nascimento;
         this.complemento = complemento;
         this.administrador = administrador;
         this.login = login;
@@ -47,7 +45,7 @@ public class Cliente {
 
 
 
-    public Cliente(Integer id, String nome, String rua, String numero, String bairro, String telefone, String cidade, String cpf, Date data_nascimento, String complemento, Boolean administrador, String login, String senha) {
+    public Cliente(Integer id, String nome, String rua, String numero, String bairro, String telefone, String cidade, String cpf, String complemento, Boolean administrador, String login, String senha) {
         this.id = id;
         this.nome = nome;
         this.rua = rua;
@@ -56,7 +54,6 @@ public class Cliente {
         this.telefone = telefone;
         this.cidade = cidade;
         this.cpf = cpf;
-        this.data_nascimento = data_nascimento;
         this.complemento = complemento;
         this.administrador = administrador;
         this.login = login;
@@ -142,14 +139,7 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
-    }
-
-    public void setData_nascimento(Date data_nascimento) {
-        this.data_nascimento = data_nascimento;
-    }
-
+    
     public String getComplemento() {
         return complemento;
     }
@@ -184,9 +174,10 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", telefone=" + telefone + ", cidade=" + cidade + ", cpf=" + cpf + ", data_nascimento=" + data_nascimento + ", complemento=" + complemento + ", administrador=" + administrador + ", login=" + login + ", senha=" + senha + '}';
+        return "Cliente{" + "id=" + id + ", nome=" + nome + ", rua=" + rua + ", numero=" + numero + ", bairro=" + bairro + ", telefone=" + telefone + ", cidade=" + cidade + ", cpf=" + cpf + ", complemento=" + complemento + ", administrador=" + administrador + ", login=" + login + ", senha=" + senha + '}';
     }
 
+    
    
 
     

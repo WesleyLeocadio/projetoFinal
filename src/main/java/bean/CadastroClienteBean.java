@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import modelo.Cliente;
 import modelo.Produto;
@@ -21,42 +23,62 @@ import modelo.Produto;
  *
  * @author Weslley Leocádio
  */
-@RequestScoped
+@ViewScoped
 @ManagedBean
 public class CadastroClienteBean {
+
     private Cliente novoUsuario;
     private List<Cliente> clientes = new ArrayList<>();
     ClienteDao dao = new ClienteDao();
 
     public CadastroClienteBean() {
         this.novoUsuario = new Cliente();
-         clientes = dao.listCliente();
+        clientes = dao.listCliente();
     }
-    
-    
- 
+
     public String cadastrar() {
-         ClienteDao cliente = new ClienteDao();
-        List<Cliente> clientes = cliente.listCliente();
 
-        if (!clientes.contains(novoUsuario)) {
-            cliente.insertCliente(novoUsuario);
-            
-            FacesContext context = FacesContext.getCurrentInstance();
-            FacesMessage mensagem = new FacesMessage("Cadastro realizado com sucesso !!");
-            mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
-            context.addMessage(null, mensagem);
+        dao.insertCliente(novoUsuario);
 
-            return "index";
+        clientes = dao.listCliente();
+        novoUsuario = new Cliente();
 
-        } else {
-            FacesContext context = FacesContext.getCurrentInstance();
-            FacesMessage mensagem = new FacesMessage("Cliente já cadastrado !!");
-            mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
-            context.addMessage(null, mensagem);
-            return null;
-        }
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesMessage mensagem = new FacesMessage("Cadastro realizado com sucesso !!");
+        mensagem.setSeverity(FacesMessage.SEVERITY_INFO);
+        context.addMessage(null, mensagem);
 
+        return "index";
+
+    }
+
+    public void inicializarCampos(Cliente p) {
+        novoUsuario = p;
+        gamb = p.getId();
+        System.out.println(gamb);
+
+    }
+    public int gamb = 0;
+
+    public String atualizar() {
+        novoUsuario.setId(gamb);
+
+        dao.updateCliente(novoUsuario);
+        novoUsuario = new Cliente();
+        clientes = dao.listCliente();
+        gamb = 0;
+        return "";
+    }
+    public void deletar(Cliente p){
+     dao.deleteCliente(p.getId());
+      novoUsuario = new Cliente();
+        clientes = dao.listCliente();
+        gamb = 0;
+     
+    }
+
+    public void limpar() {
+        novoUsuario = new Cliente();
     }
 
     public Cliente getNovoUsuario() {
@@ -75,5 +97,12 @@ public class CadastroClienteBean {
         this.clientes = clientes;
     }
 
-   
+    public int getGamb() {
+        return gamb;
+    }
+
+    public void setGamb(int gamb) {
+        this.gamb = gamb;
+    }
+
 }

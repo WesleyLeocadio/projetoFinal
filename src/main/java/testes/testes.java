@@ -23,14 +23,10 @@ public class testes {
     
     public static void main(String[] args) {
         ClienteDao dao =  new ClienteDao();
-      Date n = new Date();
-        SimpleDateFormat f = new SimpleDateFormat("y");
-        String dataFormatada =  f.format(n);
-        
-        java.sql.Date t = new java.sql.Date(n.getTime());
+   
 
-        Cliente a = new Cliente("Pronto", "sao raimundo", "5", "principal", "21232323", "ielmo marinho", "12088879471", t, "bola",false,"admin","12345");
-        //dao.insertCliente(a);
+        Cliente a = new Cliente("Pronto", "sao raimundo", "5", "principal", "21232323", "ielmo marinho", "120.888.794-71", "bola",false,"admin","12345");
+        dao.insertCliente(a);
        // dao.insertCliente(a);
        // dao.insertCliente(a);
 

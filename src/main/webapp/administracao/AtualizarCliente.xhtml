@@ -13,6 +13,9 @@
                 <p:messages style="color:red"></p:messages>
                 <p:fieldset legend="Atulizar Cliente">
                     <p:panelGrid columns="2">
+                        <h:outputLabel value="Cod: " for="cod"/>
+                        <p:inputText id="cod" value="#{cadastroClienteBean.novoUsuario.id}" disabled="true">
+                        </p:inputText>
                         <h:outputLabel value="Nome: " for="nome"/>
                         <p:inputText id="nome" value="#{cadastroClienteBean.novoUsuario.nome}" required="true" requiredMessage="Você deve informar nome">
                         </p:inputText>
@@ -22,14 +25,9 @@
 
                         </p:inputMask>
 
-                        <p:outputLabel value="Data de nascimento: " for="fDate" />
-                        <p:inputMask mask="99/99/9999"  id="fDate" value="#{cadastroClienteBean.novoUsuario.data_nascimento}" 
-                                     requiredMessage="Formato de data inválido">
-                            <f2:convertDateTime pattern="dd/MM/yyyy" for="fData" />
-
-                        </p:inputMask>
+                      
                         <h:outputLabel value="CPF: " for="cpf"/>
-                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{cadastroClienteBean.novoUsuario.telefone}" required="true" requiredMessage="Informe o cpf">
+                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{cadastroClienteBean.novoUsuario.cpf}" required="true" requiredMessage="Informe o cpf">
                         </p:inputMask>
 
                         <h:outputLabel value="RUA: " for="rua"/>
@@ -57,9 +55,9 @@
 
                     <p:toolbar>
                         <p:toolbarGroup>
-                            <h:commandButton action="#{cadastroClienteBean.cadastrar()}" value="Atualizar"/>
-                            <h:commandButton action="principal.xhtml" value="Ver cesta" immediate="true"/>
-                            <h:commandButton  value="Cancelar">
+                            <h:commandButton action="#{cadastroClienteBean.atualizar()}" value="Atualizar" disabled="#{cadastroClienteBean.novoUsuario.nome==null}"/>
+                            <h:commandButton action="#{cadastroClienteBean.atualizar()}" value="Limpar" />
+                            <h:commandButton value="Voltar">
                                 <f:ajax render="@form" resetValues="true"/>
                             </h:commandButton>
 
@@ -79,9 +77,7 @@
                         <h:outputText value="#{cliente.cpf}"></h:outputText>
                     </p:column>
 
-                    <p:column headerText="Data de Nascimento">
-                        <h:outputText value="#{cliente.data_nascimento}"></h:outputText>
-                    </p:column>
+                 
 
                     <p:column headerText="Cidade">
                         <h:outputText value="#{cliente.cidade}"></h:outputText>
@@ -93,8 +89,11 @@
 
 
 
-                    <p:column>
-                        <h:commandButton action="#{cesta.addFilme(filme)}" value="Adicionar" disabled="#{filme.quantidade ==0}"/>
+                    <p:column headerText="Atualizar">
+                        <h:commandButton action="#{cadastroClienteBean.inicializarCampos(cliente)}" value="Selecione" />
+                    </p:column>
+                     <p:column headerText="Deletar">
+                         <h:commandButton action="#{cadastroClienteBean.deletar(cliente)}" value="Excluir" />
                     </p:column>
 
                 </p:dataTable>

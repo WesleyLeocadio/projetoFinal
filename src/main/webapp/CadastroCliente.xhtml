@@ -18,17 +18,10 @@
 
                         <h:outputLabel value="Telefone: " for="nota"/>
                         <p:inputMask mask="99999-9999" id="nota" value="#{cadastroClienteBean.novoUsuario.telefone}" required="true" requiredMessage="Informe o telefone">
-
                         </p:inputMask>
 
-                        <p:outputLabel value="Data de nascimento: " for="fDate" />
-                        <p:inputMask mask="99/99/9999"  id="fDate" value="#{cadastroClienteBean.novoUsuario.data_nascimento}" 
-                                     requiredMessage="Formato de data inválido">
-                            <f2:convertDateTime pattern="dd/MM/yyyy" for="fData" />
-
-                        </p:inputMask>
                         <h:outputLabel value="CPF: " for="cpf"/>
-                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{cadastroClienteBean.novoUsuario.telefone}" required="true" requiredMessage="Informe o cpf">
+                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{cadastroClienteBean.novoUsuario.cpf}" required="true" requiredMessage="Informe o cpf">
                         </p:inputMask>
 
                         <h:outputLabel value="RUA: " for="rua"/>
