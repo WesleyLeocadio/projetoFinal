@@ -11,6 +11,9 @@
 	position:absolute; bottom:0; font-size:15px; font-family:"vedana"; background:rgba(251,251,251,0.5);
 	width:100%; text-align:center;
 }
+body{
+    background-color: #ccffff;
+}
 .header{
   margin: auto;
   background-color: #6EDEC4;
@@ -28,4 +31,23 @@
 .cabecaloCor{
     
     background-color: #39ace7;
+}
+
+.corpo {
+	display: block;
+	width: 880px;
+	float: left;
+	border-right: 1px solid #606060;
+	padding: 15px;
+
+	
+}
+.interface {
+	width:1150px;
+	background-color: #ffffff;
+	margin: -20px auto 0px auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+	padding: 10px;
+	
+		
 }

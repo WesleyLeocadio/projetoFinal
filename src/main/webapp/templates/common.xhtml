@@ -14,6 +14,7 @@
 
 
     <h:body>
+         <div class="interface">
         <div style="background-color:#6EDEC4;">
             <div style = "width: 20%">
                 <ui:insert name = "header" >
@@ -27,15 +28,18 @@
             <p:breadCrumb>
                 <p:menuitem value="PRODUTOS" url="cadastrarProduto.xhtml" />
                 <p:menuitem value="CLIENTES" url="AtualizarCliente.xhtml" />
-                <p:menuitem value="Basketball" url="#" />
-                <p:menuitem value="NBA" url="#" />
+                <p:menuitem value="ORCAMENTO" url="RealizarOrcamento.xhtml" />
+                <p:menuitem value="SAIR" url="index.xhtml" />
             </p:breadCrumb>
             
-        </div>
-        <div>
+
+        
+            <div class="corpo">
+                
             <ui:insert name = "content" >
                 <ui:include src = "/templates/contents.xhtml" />
             </ui:insert>    
+        </div>
         </div>
         <br/>
 
@@ -44,6 +48,6 @@
                 <ui:include src = "/templates/footer.xhtml" />
             </ui:insert>
         </div>
-
+        </div>
     </h:body>
 </html>

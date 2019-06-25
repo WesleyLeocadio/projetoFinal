@@ -25,6 +25,7 @@ public class CadastraProdutoDao {
 
     private Produto novoProduto;
     private List<Produto> produtos = new ArrayList<>();
+    
     ProdutoDao dao = new ProdutoDao();
 
     public CadastraProdutoDao() {
@@ -58,7 +59,7 @@ public class CadastraProdutoDao {
     }
 
     public String  atualizar() {
-        Produto n =  new Produto(novoProduto.getId_produto(),novoProduto.getNome(),novoProduto.getDescricao(), novoProduto.getPreco(), novoProduto.getQuantidade());
+        Produto n =  new Produto(novoProduto.getId_produto(),novoProduto.getNome(),novoProduto.getDescricao(), novoProduto.getPreco());
         dao.updateProduto(n);  
         produtos = dao.listProduto();
         novoProduto = new Produto();

@@ -20,9 +20,9 @@ public class ProdutoDao {
     private final Conexao con = new Conexao();
     
    
-    private final String INSERTPRODUTO = "INSERT INTO PRODUTO (NOME,DESCRICAO, PRECO, QUANTIDADE) VALUES (?,?,?,?)";
+    private final String INSERTPRODUTO = "INSERT INTO PRODUTO (NOME,DESCRICAO, PRECO) VALUES (?,?,?)";
     
-    private final String UPDATEPRODUTO = "UPDATE PRODUTO SET NOME = ?,DESCRICAO = ?,PRECO= ? ,QUANTIDADE=? WHERE ID = ?";
+    private final String UPDATEPRODUTO = "UPDATE PRODUTO SET NOME = ?,DESCRICAO = ? WHERE ID = ?";
 
     private final String DELETEPRODUTO = " DELETE FROM PRODUTO WHERE ID = ?";
     
@@ -47,7 +47,7 @@ public class ProdutoDao {
 			preparaInstrucao.setString(1, u.getNome().toUpperCase());
 			preparaInstrucao.setString(2, u.getDescricao().toUpperCase());
 			preparaInstrucao.setDouble(3, u.getPreco());
-                        preparaInstrucao.setInt(4, u.getQuantidade());
+                        
 			
 
 			// EXECUTA A INSTRUCAO
@@ -73,8 +73,7 @@ public class ProdutoDao {
                         preparaInstrucao.setString(1, u.getNome().toUpperCase());
 			preparaInstrucao.setString(2, u.getDescricao().toUpperCase());
 			preparaInstrucao.setDouble(3, u.getPreco());
-                        preparaInstrucao.setInt(4, u.getQuantidade());
-			preparaInstrucao.setInt(5, u.getId_produto());
+                        preparaInstrucao.setInt(4, u.getId_produto());
                         
 			preparaInstrucao.execute();
                         System.out.println("atualizaou");
@@ -157,7 +156,7 @@ public class ProdutoDao {
 			
 			//TRATA O RETORNO DA CONSULTA
 			while (rs.next()) { //enquanto houver registro
-				Produto u = new Produto(rs.getInt("ID"),rs.getString("NOME"),rs.getString("DESCRICAO"),rs.getDouble("PRECO"),rs.getInt("QUANTIDADE"));
+				Produto u = new Produto(rs.getInt("ID"),rs.getString("NOME"),rs.getString("DESCRICAO"),rs.getDouble("PRECO"));
 				
                                 lista.add(u); 
 			}

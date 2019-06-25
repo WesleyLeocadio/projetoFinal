@@ -21,8 +21,7 @@
                     <p:inputText id="txt_descricao" value="#{cadastraProdutoDao.novoProduto.descricao}" required="true"/>
                     <h:outputLabel value="Preço : *" for="txt_preco"></h:outputLabel>
                     <p:inputText id="txt_preco" value="#{cadastraProdutoDao.novoProduto.preco}" required="true"/>
-                    <h:outputLabel value="Quantidade : *" for="txt_quantidade"></h:outputLabel>
-                    <p:inputText id="txt_quantidade" value="#{cadastraProdutoDao.novoProduto.quantidade}" required="true"/>
+                   
                     <p:commandButton id="btn_reset" value="Reset" type="reset"/>
                     <p:commandButton id="btn_add" value="Add" update=" form1 form2 " action="#{cadastraProdutoDao.cadastrar()}"/> 
 
@@ -46,9 +45,7 @@
                         <h:outputText value="#{produto.preco}"></h:outputText>
                     </p:column>
 
-                    <p:column headerText="Quantidade">
-                        <h:outputText value="#{produto.quantidade}"></h:outputText>
-                    </p:column>
+                   
 
 
                    <p:column>

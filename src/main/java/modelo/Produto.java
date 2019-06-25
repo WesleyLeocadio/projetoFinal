@@ -15,24 +15,24 @@ public class Produto {
     private String nome;
     private String descricao;
     private double preco;
-    private int quantidade;
+
 
     public Produto() {
     }
 
-    public Produto(String nome, String descricao, double preco, int quantidade) {
+    public Produto(String nome, String descricao, double preco) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
-        this.quantidade = quantidade;
+        
     }
 
-    public Produto(int id_produto, String nome, String descricao, double preco, int quantidade) {
+    public Produto(int id_produto, String nome, String descricao, double preco) {
         this.id_produto = id_produto;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
-        this.quantidade = quantidade;
+        
     }
 
     public int getId_produto() {
@@ -67,17 +67,11 @@ public class Produto {
         this.preco = preco;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
 
     @Override
     public String toString() {
-        return "Produto{" + "id_produto=" + id_produto + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", quantidade=" + quantidade + '}';
+        return "Produto{" + "id_produto=" + id_produto + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco+'}';
     }
     
 }
