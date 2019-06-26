@@ -56,15 +56,21 @@
                     <p:toolbar>
                         <p:toolbarGroup>
                             <h:commandButton action="#{cadastroClienteBean.atualizar()}" value="Atualizar" disabled="#{cadastroClienteBean.novoUsuario.nome==null}"/>
-                            <h:commandButton action="#{cadastroClienteBean.atualizar()}" value="Limpar" />
-                            <h:commandButton value="Voltar">
-                                <f:ajax render="@form" resetValues="true"/>
-                            </h:commandButton>
-
+                         
                         </p:toolbarGroup>
                     </p:toolbar>
                 </p:fieldset>
             </h:form>
+            <form>
+               <p:toolbar>
+                        <p:toolbarGroup>
+                            <h:commandButton action="#{cadastroClienteBean.limpar()}" value="Limpar Campos" />
+                         
+                            <h:commandButton value="Voltar"/>
+
+                        </p:toolbarGroup>
+                    </p:toolbar> 
+            </form>
 
             <h:form>
                 <br/><br/><br/>

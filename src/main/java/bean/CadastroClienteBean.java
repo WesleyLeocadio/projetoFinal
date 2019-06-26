@@ -6,7 +6,6 @@
 package bean;
 
 import dao.ClienteDao;
-import dao.ProdutoDao;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,7 +38,7 @@ public class CadastroClienteBean {
     public String cadastrar() {
 
         dao.insertCliente(novoUsuario);
-
+        System.out.println(novoUsuario.toString());
         clientes = dao.listCliente();
         novoUsuario = new Cliente();
 
@@ -69,12 +68,13 @@ public class CadastroClienteBean {
         gamb = 0;
         return "";
     }
-    public void deletar(Cliente p){
-     dao.deleteCliente(p.getId());
-      novoUsuario = new Cliente();
+
+    public void deletar(Cliente p) {
+        dao.deleteCliente(p.getId());
+        novoUsuario = new Cliente();
         clientes = dao.listCliente();
         gamb = 0;
-     
+
     }
 
     public void limpar() {

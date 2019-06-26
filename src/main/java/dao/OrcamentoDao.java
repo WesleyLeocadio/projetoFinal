@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import modelo.Orcamento;
 import modelo.Produto;
 
@@ -63,6 +64,8 @@ public class OrcamentoDao {
     }
 
     public boolean insertOrcamento(Orcamento u) {
+         
+      
         try {
             System.out.println("chegou");
             // CONECTA
@@ -91,7 +94,8 @@ public class OrcamentoDao {
             return false;
 
         }
-
+        
+      
     }
 
     public int getIdUltimoOrcamento() {
@@ -242,7 +246,6 @@ public class OrcamentoDao {
             con.conecta();
             PreparedStatement preparaInstrucao;
             preparaInstrucao = con.getConexao().prepareStatement(INSERTPRODUTO_ORCAMENTO);
-
             // SETA OS VALORES DA INSTRUCAO
             // OBS: PASSA OS PARAMETROS NA ORDEM DAS ? DA INSTRUCAO
             preparaInstrucao.setInt(1, orc);

@@ -29,6 +29,8 @@
                         
                     </p:dataTable>
                 </p:outputPanel>
+                 <p:commandButton  value="Ver Orcamentos"  action="ListaOrcamentos?faces-redirect=true" immediate="true"/> 
+
             </h:form>
 
 
@@ -55,11 +57,13 @@
                         </p:column>
 
                         <p:column headerText="Carrinho">
-                            <h:commandButton action="#{cadastraProdutoDao.deletar(produto.id_produto)}" value="Adicionar"/>
+                            <h:commandButton action="#{orcamentoBean.removerCarrinho(produto)}" value="Retirar"/>
                         </p:column>
                         
                     </p:dataTable>
                 </p:outputPanel>
+                <p:commandButton  value="finzalizar"  action="#{orcamentoBean.finalizar()}" disabled="#{orcamentoBean.carrinho.size()==0}"/> 
+
             </h:form>
         </ui:define>         
     </ui:composition>

@@ -14,40 +14,41 @@
 
 
     <h:body>
-         <div class="interface">
-        <div style="background-color:#6EDEC4;">
-            <div style = "width: 100%">
-                <ui:insert name = "header" >
-                    <ui:include src = "/templates/header.xhtml" /> 
-                </ui:insert> 
+        <div class="interface">
+            <div style="background-color:#6EDEC4;">
+                <div style = "width: 100%">
+                    <ui:insert name = "header" >
+                        <ui:include src = "/templates/header.xhtml" /> 
+                    </ui:insert> 
+                </div>
+                <br/>
+            </div>
+
+            <div class="sidebar">
+                <p:breadCrumb>
+                    <p:menuitem value="Inicial" url="principal.xhtml" />
+                    <p:menuitem value="PRODUTOS" url="cadastrarProduto.xhtml" />
+                    <p:menuitem value="CLIENTES" url="AtualizarCliente.xhtml" />
+                    <p:menuitem value="ORCAMENTO" url="RealizarOrcamento.xhtml" />
+                    <p:menuitem value="SAIR" url="index.xhtml"  />
+                </p:breadCrumb>
+
+<br/>
+
+                <div class="corpo">
+
+                    <ui:insert name = "content" >
+                        <ui:include src = "/templates/contents.xhtml" />
+                    </ui:insert>    
+                </div>
             </div>
             <br/>
-        </div>
-        
-        <div class="sidebar">
-            <p:breadCrumb>
-                <p:menuitem value="PRODUTOS" url="cadastrarProduto.xhtml" />
-                <p:menuitem value="CLIENTES" url="AtualizarCliente.xhtml" />
-                <p:menuitem value="ORCAMENTO" url="RealizarOrcamento.xhtml" />
-                <p:menuitem value="SAIR" url="index.xhtml" />
-            </p:breadCrumb>
-            
 
-        
-            <div class="corpo">
-                
-            <ui:insert name = "content" >
-                <ui:include src = "/templates/contents.xhtml" />
-            </ui:insert>    
-        </div>
-        </div>
-        <br/>
-
-        <div >
-            <ui:insert name = "footer" >
-                <ui:include src = "/templates/footer.xhtml" />
-            </ui:insert>
-        </div>
+            <div >
+                <ui:insert name = "footer" >
+                    <ui:include src = "/templates/footer.xhtml" />
+                </ui:insert>
+            </div>
         </div>
     </h:body>
 </html>

@@ -7,8 +7,8 @@ import java.util.List;
 public class Orcamento {
     private int id_orcamento;
     private int id_cliente;
-    private Date data_pedido;
-    private String situacao;
+    private Date data_pedido=null;
+    private String situacao="pendente";
     private List<Produto> produtos;
 
     public Orcamento() {
@@ -40,6 +40,10 @@ public class Orcamento {
         this.data_pedido = data_pedido;
         this.situacao = situacao;
         this.produtos = produtos;
+    }
+
+    public Orcamento(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
     
 

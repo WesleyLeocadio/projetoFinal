@@ -32,29 +32,21 @@ public class ClienteDao {
 
     public boolean insertCliente(Cliente u) {
         try {
-            System.out.println("objeto: "+u.toString());
-            // CONECTA
-            System.out.println(" antes");
+          
             con.conecta();
-            System.out.println("depois");
             PreparedStatement preparaInstrucao;
-            System.out.println("1");
             preparaInstrucao = con.getConexao().prepareStatement(INSERTCLIENTE);
             preparaInstrucao.setString(1, u.getNome().toUpperCase());
-            System.out.println("2");
             preparaInstrucao.setString(2, u.getRua().toUpperCase());
             preparaInstrucao.setString(3, u.getNumero().toUpperCase());
             preparaInstrucao.setString(4, u.getBairro().toUpperCase());
             preparaInstrucao.setString(5, u.getTelefone().toUpperCase());
-            System.out.println("3");
             preparaInstrucao.setString(6, u.getCidade().toUpperCase());
             preparaInstrucao.setString(7, u.getCpf().toUpperCase());
             preparaInstrucao.setString(8, u.getComplemento().toUpperCase());
             preparaInstrucao.setBoolean(9, u.getAdministrador());
-            System.out.println("4");
             preparaInstrucao.setString(10, u.getLogin());
             preparaInstrucao.setString(11,u.getSenha());
-            System.out.println("5");
             // EXECUTA A INSTRUCAO
             preparaInstrucao.execute();
             System.out.println("foi");

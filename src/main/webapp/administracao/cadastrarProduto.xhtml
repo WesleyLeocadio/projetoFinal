@@ -19,11 +19,13 @@
 
                     <h:outputLabel value="Descrição : *" for="txt_descricao"></h:outputLabel>
                     <p:inputText id="txt_descricao" value="#{cadastraProdutoDao.novoProduto.descricao}" required="true"/>
+                   
+                    
                     <h:outputLabel value="Preço : *" for="txt_preco"></h:outputLabel>
                     <p:inputText id="txt_preco" value="#{cadastraProdutoDao.novoProduto.preco}" required="true"/>
                    
                     <p:commandButton id="btn_reset" value="Reset" type="reset"/>
-                    <p:commandButton id="btn_add" value="Add" update=" form1 form2 " action="#{cadastraProdutoDao.cadastrar()}"/> 
+                    <p:commandButton id="btn_add" value="Add" update=" form1 form2 " action="#{cadastraProdutoDao.cadastrar()}" /> 
 
                 </h:panelGrid>
             </p:panel>
