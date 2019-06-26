@@ -20,7 +20,7 @@ and open the template in the editor.
     margin-right: -50%;
     transform: translate(-50%, -50%) }
 body{
-    background-color: #ccc;
+        background-image: url("../images/1.png");
 }
 
 .grid-login {
@@ -34,9 +34,7 @@ body{
 }
 
 
-html {
-    background-color: #f6f6f6;
-}
+
 
 body {
     font-family: "Poppins", sans-serif;

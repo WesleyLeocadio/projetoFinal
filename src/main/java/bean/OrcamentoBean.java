@@ -8,6 +8,10 @@ package bean;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import modelo.Cliente;
 import modelo.Produto;
 
 /**
@@ -17,6 +21,7 @@ import modelo.Produto;
 @ManagedBean
 @javax.faces.bean.ApplicationScoped
 public class OrcamentoBean {
+    
         private List<Produto> carrinho ;
         Produto produto ;
 
@@ -28,6 +33,11 @@ public class OrcamentoBean {
     public void adicionar(Produto p){
     carrinho.add(p);
     produto= new Produto();
+//    FacesContext fc = FacesContext . getCurrentInstance () ;
+//ExternalContext ec = fc . getExternalContext () ;
+//HttpSession s = ( HttpSession ) ec . getSession ( true ) ;
+// Cliente c=(Cliente) s.getAttribute("admin-logado") ;
+//        System.out.println(c.toString());
     
     }
  

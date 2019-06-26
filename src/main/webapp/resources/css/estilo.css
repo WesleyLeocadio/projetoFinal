@@ -12,7 +12,8 @@
 	width:100%; text-align:center;
 }
 body{
-    background-color: #ccffff;
+      background-image: url("/resources/images/topo2.jpeg");
+
 }
 .header{
   margin: auto;
@@ -33,15 +34,7 @@ body{
     background-color: #39ace7;
 }
 
-.corpo {
-	display: block;
-	width: 880px;
-	float: left;
-	border-right: 1px solid #606060;
-	padding: 15px;
 
-	
-}
 .interface {
 	width:1150px;
 	background-color: #ffffff;
