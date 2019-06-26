@@ -7,8 +7,12 @@
 
     <body>
         <ui:composition> 
-            <p:graphicImage value="/resources/images/1.png" width="100%" height="200px"/>
-            <p:panel rendered="#{sessionScope['admin-logado']!=null}" style="background-color:#6EDEC4;">
+            <p:galleria value="#{imagesView.images}" var="image" panelWidth="1150" panelHeight="200" showCaption="true">
+                <p:graphicImage value="../resources/images/#{image}"  alt="Seu produto está aqui" title="Produtos de Qualidade"/>
+
+            </p:galleria>
+            
+            <p:panel rendered="#{sessionScope['admin-logado']!=null}" >
 
                 <h:form>
                     <p:outputLabel value="Bem-vindo, #{sessionScope['usuario-logado'].nome}" /> <br/>

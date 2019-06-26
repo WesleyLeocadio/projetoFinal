@@ -12,7 +12,7 @@
 	width:100%; text-align:center;
 }
 body{
-      background-image: url("/resources/images/topo2.jpeg");
+    background-color: #cccccc;
 
 }
 .header{
@@ -37,7 +37,7 @@ body{
 
 .interface {
 	width:1150px;
-	background-color: #ffffff;
+        background-color: #ccffff;
 	margin: -20px auto 0px auto;
 	box-shadow: 0px 0px 10px rgba(0,0,0,.5);
 	padding: 10px;

@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:f2="http://java.sun.com/jsf/core">
+    <ui:composition template = "../templates/common.xhtml">	
+        <ui:define name = "content">				
+
+            <h:form>
+                <p:messages style="color:red"></p:messages>
+                <p:fieldset legend="Atulizar Cliente">
+                    <p:panelGrid columns="2">
+                        <h:outputLabel value="Cod: " for="cod"/>
+                        <p:inputText id="cod" value="#{cadastroClienteBean.novoUsuario.id}" disabled="true">
+                        </p:inputText>
+                        <h:outputLabel value="Nome: " for="nome"/>
+                        <p:inputText id="nome" value="#{cadastroClienteBean.novoUsuario.nome}" required="true" requiredMessage="Você deve informar nome">
+                        </p:inputText>
+
+                        <h:outputLabel value="Telefone: " for="nota"/>
+                        <p:inputMask mask="99999-9999" id="nota" value="#{cadastroClienteBean.novoUsuario.telefone}" required="true" requiredMessage="Informe o telefone">
+
+                        </p:inputMask>
+
+                      
+                        <h:outputLabel value="CPF: " for="cpf"/>
+                        <p:inputMask mask="999.999.999-99" id="cpf" value="#{cadastroClienteBean.novoUsuario.cpf}" required="true" requiredMessage="Informe o cpf">
+                        </p:inputMask>
+
+                        <h:outputLabel value="RUA: " for="rua"/>
+                        <p:inputText id="rua" value="#{cadastroClienteBean.novoUsuario.rua}" ></p:inputText>
+                        <h:outputLabel value="BAIRRO: " for="endereco"/>
+                        <p:inputText id="endereco" value="#{cadastroClienteBean.novoUsuario.bairro}" ></p:inputText>
+                        <h:outputLabel value="NUMERO: " for="descricao"/>
+                        <p:inputText id="descricao" value="#{cadastroClienteBean.novoUsuario.numero}" ></p:inputText>
+                        <h:outputLabel value="CIDADE: "  for="idcidade"/>
+                        <p:inputText id="idcidade" value="#{cadastroClienteBean.novoUsuario.cidade}" required="true" requiredMessage="Informe a cidade"></p:inputText>
+                        <h:outputLabel value="COMPLEMENTO: " for="idcomplemento"/>
+                        <p:inputText id="idcomplemento" value="#{cadastroClienteBean.novoUsuario.complemento}" ></p:inputText>
+                        <h:outputLabel value="LOGIN: " for="idlogin"/>
+                        <p:inputText id="idlogin" value="#{cadastroClienteBean.novoUsuario.login}" required="true" requiredMessage="Login é necessário" validatorMessage="Login deve ter pelo menos 5 caracteres.">
+                            <f:validateLength minimum="5" />
+                        </p:inputText>
+                        <h:outputLabel value="SENHA: "  for="fsenha"/> <p:password id= "fsenha" value="#{cadastroClienteBean.novoUsuario.senha}" required="true" requiredMessage="Senha é necessário"  validatorMessage="Senha deve ter pelo menos 5 caracteres.">
+                            <f:validateLength minimum="5" />
+                        </p:password>
+
+
+
+
+                    </p:panelGrid>  
+
+                    <p:toolbar>
+                        <p:toolbarGroup>
+                            <h:commandButton action="#{cadastroClienteBean.atualizar()}" value="Atualizar" disabled="#{cadastroClienteBean.novoUsuario.nome==null}"/>
+                         
+                        </p:toolbarGroup>
+                    </p:toolbar>
+                </p:fieldset>
+            </h:form>
+            <form>
+               <p:toolbar>
+                        <p:toolbarGroup>
+                            <h:commandButton action="#{cadastroClienteBean.limpar()}" value="Limpar Campos" />
+                         
+                            <h:commandButton value="Voltar"/>
+
+                        </p:toolbarGroup>
+                    </p:toolbar> 
+            </form>
+
+            <h:form>
+                <br/><br/><br/>
+                <p:dataTable value="#{cadastroClienteBean.clientes}" var="cliente">
+                    <p:column headerText="Nome" sortBy="#{cliente.nome}">
+                        <h:outputText value="#{cliente.nome}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Cpf">
+                        <h:outputText value="#{cliente.cpf}"></h:outputText>
+                    </p:column>
+
+                 
+
+                    <p:column headerText="Cidade">
+                        <h:outputText value="#{cliente.cidade}"></h:outputText>
+                    </p:column>
+
+                    <p:column headerText="Complemento">
+                        <h:outputText value="#{cliente.complemento}"></h:outputText>
+                    </p:column>
+
+
+
+                    <p:column headerText="Atualizar">
+                        <h:commandButton action="#{cadastroClienteBean.inicializarCampos(cliente)}" value="Selecione" />
+                    </p:column>
+                     <p:column headerText="Deletar">
+                         <h:commandButton action="#{cadastroClienteBean.deletar(cliente)}" value="Excluir" />
+                    </p:column>
+
+                </p:dataTable>
+                <br/><br/><br/>
+            </h:form>
+
+
+
+
+        </ui:define>         
+    </ui:composition>
+</html>
+

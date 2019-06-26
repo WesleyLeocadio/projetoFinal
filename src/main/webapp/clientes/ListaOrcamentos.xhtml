@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template = "../templates/common.xhtml">	
+        <ui:define name = "content">				
+           
+            
+           <h:form id="form">
+                <p:outputPanel id="books">
+                    <p:dataTable value="#{listaOrcamentosBean.orcamentos}" var="orcamento" id="booksTable">
+
+                        <p:column headerText="Id Orcamento" sortBy="#{orcamento.id_orcamento}">
+                            <h:outputText value="#{orcamento.id_orcamento}" />
+                        </p:column>
+                        <p:column headerText="Id CLiente" sortBy="#{orcamento.id_cliente}">
+                            <h:outputText value="#{orcamento.id_cliente}" />
+                        </p:column>
+
+                        <p:column headerText="data">
+                            <h:outputText value="#{orcamento.data_pedido}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Situação" sortBy="#{orcamento.situacao}">
+                            <h:outputText value="#{orcamento.situacao}"></h:outputText>
+                        </p:column>
+                        <p:column headerText="Produtos" sortBy="#{orcamento.produtos}">
+                            <h:outputText value="#{orcamento.produtos.get(0)}"></h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Finalizar Compra">
+                            <h:commandButton action="#{listaOrcamentosBean.realizarPagamento(orcamento)}" value="Retirar"/>
+                        </p:column>
+                        
+                    </p:dataTable>
+                </p:outputPanel>
+                <p:commandButton  value="finzalizar"  action="#{orcamentoBean.finalizar()}" disabled="#{orcamentoBean.carrinho.size()==0}"/> 
+
+            </h:form>
+            
+          
+
+           
+        </ui:define>         
+    </ui:composition>
+</html>
+

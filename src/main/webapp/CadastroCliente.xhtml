@@ -7,8 +7,12 @@
        xmlns:f2="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
+                 <link rel ="stylesheet" href="resources/css/login.css" />
+
     </h:head>
     <h:body>
+        <div class="wrapper fadeInDown">
+          
         <h:form id="frm">
             <p:messages/>
             <h:panelGrid columns="2" styleClass="grid-login">
@@ -48,6 +52,8 @@
                 <p:commandButton value="Cancelar" action="index?faces-redirect=true" immediate="true"/>	
             </div>	
         </h:form>
+           
+        </div>
     </h:body>
 </html>
 

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template = "../templates/common.xhtml">	
+        <ui:define name = "content">	
+            <h:form id="form1">
+            <p:growl id="msgs" />
+
+            <p:panel header="Cadastrar Produto" style="margin-bottom:20px">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputLabel value="Nome : *" for="txt_nome"></h:outputLabel>
+                    <p:inputText id="txt_nome" value="#{cadastraProdutoDao.novoProduto.nome}" required="true"/>
+
+                    <h:outputLabel value="Descrição : *" for="txt_descricao"></h:outputLabel>
+                    <p:inputText id="txt_descricao" value="#{cadastraProdutoDao.novoProduto.descricao}" required="true"/>
+                    <h:outputLabel value="Preço : *" for="txt_preco"></h:outputLabel>
+                    <p:inputText id="txt_preco" value="#{cadastraProdutoDao.novoProduto.preco}" required="true"/>
+                    
+                    <p:commandButton id="btn_reset" value="Reset" type="reset"/>
+                    
+                    <p:commandButton id="btn_add" value="Atualizar" update="form1 " action="#{cadastraProdutoDao.atualizar()}" immediate="true"/> 
+
+                </h:panelGrid>
+            </p:panel>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
