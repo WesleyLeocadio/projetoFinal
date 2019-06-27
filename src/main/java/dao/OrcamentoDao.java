@@ -224,6 +224,7 @@ public class OrcamentoDao {
                 Orcamento u = new Orcamento(rs.getInt("id_orcamento"), rs.getInt("id_cliente"), rs.getDate("data_pedido"), rs.getString("situacao"));                //lista.add(u); 
                 lista.add(u);
             }
+            System.out.println("foi");
             // DESCONECTA
             con.desconecta();
         } catch (SQLException e) {

@@ -45,10 +45,11 @@ public class OrcamentoBean {
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
         HttpSession s = (HttpSession) ec.getSession(true);
-        Cliente c = (Cliente) s.getAttribute("admin-logado");
+        Cliente c = (Cliente) s.getAttribute("usuario-logado");
         //System.out.println(c.toString());
 
         OrcamentoDao a = new OrcamentoDao();
+        System.out.println(c.getId());
         Orcamento orc = new Orcamento(c.getId());
 
         a.insertOrcamento(orc);

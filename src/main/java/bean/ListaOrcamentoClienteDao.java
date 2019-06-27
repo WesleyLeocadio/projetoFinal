@@ -4,6 +4,10 @@ import dao.OrcamentoDao;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+import modelo.Cliente;
 import modelo.Orcamento;
 import modelo.Produto;
 
@@ -13,8 +17,8 @@ import modelo.Produto;
  */
 @ManagedBean
 @javax.faces.bean.ApplicationScoped
-public class ListaOrcamentosBean {
-private List<Orcamento> orcamentos = new  ArrayList<>();
+public class ListaOrcamentoClienteDao {
+  private List<Orcamento> orcamentos = new  ArrayList<>();
 
 OrcamentoDao dao= new OrcamentoDao();
     Produto produto;
@@ -30,8 +34,12 @@ OrcamentoDao dao= new OrcamentoDao();
         orcamentos = dao.listOrcamento();
     
     }
-    public ListaOrcamentosBean() {
-        orcamentos=dao.listOrcamento() ;
+    public ListaOrcamentoClienteDao() {
+         FacesContext fc = FacesContext.getCurrentInstance();
+        ExternalContext ec = fc.getExternalContext();
+        HttpSession s = (HttpSession) ec.getSession(true);
+        Cliente c = (Cliente) s.getAttribute("usuario-logado");
+        orcamentos=dao.listOrcamentoCliente(c.getId()) ;
     }
 
     public List<Orcamento> getOrcamentos() {
@@ -50,7 +58,5 @@ OrcamentoDao dao= new OrcamentoDao();
         this.produto = produto;
     }
     
-    
-    
-    
+      
 }

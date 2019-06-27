@@ -10,7 +10,7 @@
             
            <h:form id="form">
                 <p:outputPanel id="books">
-                    <p:dataTable value="#{listaOrcamentosBean.orcamentos}" var="orcamento" id="booksTable">
+                    <p:dataTable value="#{listaOrcamentoClienteDao.orcamentos}" var="orcamento" id="booksTable">
 
                         <p:column headerText="Id Orcamento" sortBy="#{orcamento.id_orcamento}">
                             <h:outputText value="#{orcamento.id_orcamento}" />
@@ -30,13 +30,9 @@
                             <h:outputText value="#{orcamento.produtos.get(0)}"></h:outputText>
                         </p:column>
 
-                        <p:column headerText="Finalizar Compra">
-                            <h:commandButton action="#{listaOrcamentosBean.realizarPagamento(orcamento)}" value="Retirar"/>
-                        </p:column>
-                        
+                       
                     </p:dataTable>
                 </p:outputPanel>
-                <p:commandButton  value="finzalizar"  action="#{orcamentoBean.finalizar()}" disabled="#{orcamentoBean.carrinho.size()==0}"/> 
 
             </h:form>
             
